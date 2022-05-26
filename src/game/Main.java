@@ -9,8 +9,8 @@ public class Main {
         Scanner scr = new Scanner(System.in);
 
         int userNumber;
-
-        for (int i = 0; i < 3; i++) {
+        int count;
+        for (count = 0; count < 3; count++) {
             System.out.println("Угадайте цифру от 0 до 9. У вас три попытки - ");
             userNumber = scr.nextInt();
             if (userNumber < randomNumber) {
@@ -21,5 +21,7 @@ public class Main {
                 System.out.println("Вы выиграли");
             }
         }
+        System.out.println("Повторить игру еще раз? (1 – повторить, 0 – нет) - ");
+        int reload = scr.nextInt();
     }
 }
