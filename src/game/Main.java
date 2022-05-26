@@ -1,11 +1,12 @@
 package game;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        //game ();
-
+        //game();
+        arrays();
     }
 
     static void game() {
@@ -40,6 +41,13 @@ public class Main {
     static void arrays() {
         String[] words = {"apple", "orange", "lemon", "banana", "apricot", "avocado", "broccoli",
                 "carrot", "cherry", "garlic", "grape", "melon", "leak", "kiwi", "mango", "mushroom",
-                "nut", "olive", "pea", "peanut", "pear", "pepper", "pineapple", "pumpkin", "potato" };
+                "nut", "olive", "pea", "peanut", "pear", "pepper", "pineapple", "pumpkin", "potato"};
+        Scanner scr = new Scanner(System.in);
+        int index = (int) (Math.random() * 25);
+
+        String randWords;
+        String userWords;
+
+
     }
 }
