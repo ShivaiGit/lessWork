@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        game ();
+        //game ();
 
     }
     public static void game() {
@@ -34,5 +34,11 @@ public class Main {
         if (reload == 1)
             game();
         System.out.println("Игра окончена!");
+    }
+
+    public static void arrays () {
+        String[] words = {"apple", "orange", "lemon", "banana", "apricot", "avocado", "broccoli",
+                "carrot", "cherry", "garlic", "grape", "melon", "leak", "kiwi", "mango", "mushroom",
+                "nut", "olive", "pea", "peanut", "pear", "pepper", "pineapple", "pumpkin", "potato"};
     }
 }
