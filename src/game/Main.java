@@ -5,11 +5,11 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        //game();
-        arrays();
+        gameWords();
+        //gameNumber();
     }
 
-    static void game() {
+    static void gameNumber() {
         int randomNumber = (int) (Math.random() * 20);
         Scanner scr = new Scanner(System.in);
 
@@ -34,20 +34,29 @@ public class Main {
         System.out.println("Повторить игру еще раз? (1 – повторить, 0 – нет) - ");
         int reload = scr.nextInt();
         if (reload == 1)
-            game();
+            gameNumber();
         System.out.println("Игра окончена!");
     }
 
-    static void arrays() {
+    static void gameWords() {
         String[] words = {"apple", "orange", "lemon", "banana", "apricot", "avocado", "broccoli",
                 "carrot", "cherry", "garlic", "grape", "melon", "leak", "kiwi", "mango", "mushroom",
-                "nut", "olive", "pea", "peanut", "pear", "pepper", "pineapple", "pumpkin", "potato"};
+                "nut", "olive", "pea", "peanut", "pear", "pepper", "pineapple", "pumpkin", "potato"
+        };
+
+        Random rdm = new Random();
+        int index = rdm.nextInt(words.length);
+        //System.out.println(words[index]);
+
         Scanner scr = new Scanner(System.in);
-        int index = (int) (Math.random() * 25);
+        System.out.println("Угадайте слова из списка - ");
+        String userWords = scr.nextLine();
 
-        String randWords;
-        String userWords;
-
+        while (!words[index].equals(userWords)) {
+            System.out.println("Не угадали. Повторите ещё раз");
+            userWords = scr.nextLine();
+        }
+        System.out.println("Угадали!");
 
     }
 }
