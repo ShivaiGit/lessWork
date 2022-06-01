@@ -5,8 +5,21 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        gameWords();
+        //testArray();
+        //riddle();
+        //gameWords();
         //gameNumber();
+    }
+
+
+    static void testArray() {
+
+    }
+
+    static void riddle() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Что это такое: синий, большой, с усами и полностью набит зайцами?");
+
     }
 
     static void gameNumber() {
