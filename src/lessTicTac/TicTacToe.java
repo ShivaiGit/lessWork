@@ -25,7 +25,7 @@ public class TicTacToe {
         initField();
 
         printField();
-        
+
         playGame();
 
 
@@ -70,13 +70,13 @@ public class TicTacToe {
     }
 
     private static void playGame() {
-    
+
         humanTurn();
         printField();
-        
+
         aiTurn();
         printField();
-        
+
     }
 
     private static void humanTurn() {
@@ -92,17 +92,23 @@ public class TicTacToe {
 
             System.out.println("Номер строки: ");
             if (sc.hasNextInt()) {
-                rowNumber= sc.nextInt()-1;
+                rowNumber = sc.nextInt() - 1;
             } else {
                 incorrectInput();
                 isInputValid = false;
                 continue;
             }
 
-
+            System.out.println("Номер столбца: ");
+            if (sc.hasNextInt()) {
+                columnNumber = sc.nextInt() - 1;
+            } else {
+                incorrectInput();
+                isInputValid = false;
+            }
 
         } while (!isInputValid);
-
+        FIELD[rowNumber][columnNumber] = DOT_HUMAN;
 
     }
 
