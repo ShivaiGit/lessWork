@@ -1,5 +1,6 @@
 package game;
 
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -9,11 +10,22 @@ public class Main {
         //riddle();
         //gameWords();
         //gameNumber();
+
     }
 
 
     static void testArray() {
-
+        int[] array = new int[10];
+        int minArray = array[0];
+        int maxArray = array[0];
+        for (int i = 0; i < array.length; i++) {
+            array [i] = (int)(Math.random()*9)+1;
+        }
+        for (int i : array) {
+            minArray = Math.min(minArray, i);
+            maxArray = Math.max(maxArray, i);
+        }
+        System.out.print(maxArray + " " + minArray);
     }
 
     static void riddle() {

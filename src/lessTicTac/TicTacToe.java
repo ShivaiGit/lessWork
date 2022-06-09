@@ -67,12 +67,14 @@ public class TicTacToe {
             }
             System.out.println();
         }
+        System.out.println();
     }
 
     private static void playGame() {
 
         humanTurn();
         printField();
+
 
         aiTurn();
         printField();
@@ -84,13 +86,13 @@ public class TicTacToe {
         int columnNumber;
         boolean isInputValid = true;
 
-        System.out.println("Õîä ÷åëîâåêà. Ââåäèòå íîìåð ñòðîêè è ñòîëáöà");
+        System.out.println("Ð¥Ð¾Ð´ Ñ‡ÐµÐ»Ð¾Ð²ÐµÐºÐ°. Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÐºÐ¾Ð¾Ñ€Ð´Ð¸Ð½Ð°Ñ‚Ñ‹ Ð½Ð¾Ð¼ÐµÑ€ ÑÑ‚Ñ€Ð¾ÐºÐ¸ Ð¸ ÑÑ‚Ð¾Ð±Ñ†Ð°.");
         do {
             rowNumber = -1;
             columnNumber = -1;
             isInputValid = true;
 
-            System.out.println("Íîìåð ñòðîêè: ");
+            System.out.println("Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð½Ð¾Ð¼ÐµÑ€ ÑÑ‚Ñ€Ð¾ÐºÐ¸: ");
             if (sc.hasNextInt()) {
                 rowNumber = sc.nextInt() - 1;
             } else {
@@ -99,7 +101,7 @@ public class TicTacToe {
                 continue;
             }
 
-            System.out.println("Íîìåð ñòîëáöà: ");
+            System.out.println("Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð½Ð¾Ð¼ÐµÑ€ ÑÑ‚Ð¾Ð»Ð±Ñ†Ð°: ");
             if (sc.hasNextInt()) {
                 columnNumber = sc.nextInt() - 1;
             } else {
@@ -107,14 +109,36 @@ public class TicTacToe {
                 isInputValid = false;
             }
 
-        } while (!isInputValid);
+        } while (!(isInputValid && isHumanTurnValid(rowNumber, columnNumber)));
         FIELD[rowNumber][columnNumber] = DOT_HUMAN;
 
     }
 
     private static void incorrectInput() {
-        System.out.println("Îøèáêà ââîäà. Ââåäèòå ÷èñëî â äèàïîçîíå ïîëÿ");
+        System.out.println("ÐžÑˆÐ¸Ð±ÐºÐ° Ð²Ð²Ð¾Ð´Ð°. Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð½Ð¾Ð¼ÐµÑ€ Ð² Ñ€Ð°Ð¼ÐºÐ°Ñ… Ð¸Ð³Ñ€Ð¾Ð²Ð¾Ð³Ð¾ Ð¿Ð¾Ð»Ñ.");
         sc.nextLine();
+    }
+
+    private static boolean isHumanTurnValid(int rowNumber, int columnNumber) {
+
+        if (!isNumberValid(rowNumber, columnNumber)) {
+            System.out.println("ÐŸÑ€Ð¾Ð²ÐµÑ€ÑŒÑ‚Ðµ Ð²Ð²ÐµÐ´ÐµÐ½Ð½Ð¾Ðµ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ ");
+            return false;
+
+        } else if (!isCellFull(rowNumber, columnNumber)) {
+            System.out.println("Ð’Ñ‹ Ð²Ñ‹Ð±Ñ€Ð°Ð»Ð¸ Ð·Ð°Ð½ÑÑ‚ÑƒÑŽ ÑÑ‡ÐµÐ¹ÐºÑƒ");
+            return false;
+        }
+        return true;
+    }
+
+    private static boolean isNumberValid(int rowNumber, int columnNumber) {
+        return !(rowNumber >= SIZE || rowNumber < 0 || columnNumber >= SIZE || columnNumber < 0);
+
+    }
+
+    private static boolean isCellFull(int rowNumber, int columnNumber) {
+        return FIELD[rowNumber][columnNumber] == DOT_EMPTY;
     }
 
     private static void aiTurn() {
