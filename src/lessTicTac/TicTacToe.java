@@ -156,6 +156,7 @@ public class TicTacToe {
     }
 
     private static void checkMapFull() {
+        return turnsCount == SIZE * SIZE;
 
     }
 
