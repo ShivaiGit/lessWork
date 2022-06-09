@@ -142,6 +142,15 @@ public class TicTacToe {
     }
 
     private static void aiTurn() {
+        int rowNumber;
+        int columnNumber;
+        System.out.println("Ход компьютера");
+        do {
+            rowNumber = rnd.nextInt(SIZE);
+            columnNumber = rnd.nextInt(SIZE);
+        } while (!isCellFull(rowNumber, columnNumber));
 
+        FIELD[rowNumber][columnNumber] = DOT_AI;
+        System.out.println("Компьютер пошёл: " + rowNumber + "-" + columnNumber);
     }
 }
