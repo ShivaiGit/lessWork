@@ -74,10 +74,12 @@ public class TicTacToe {
 
         humanTurn();
         printField();
+        checkEnd();
 
 
         aiTurn();
         printField();
+        checkEnd();
 
     }
 
@@ -139,6 +141,22 @@ public class TicTacToe {
 
     private static boolean isCellFull(int rowNumber, int columnNumber) {
         return FIELD[rowNumber][columnNumber] == DOT_EMPTY;
+    }
+
+    private static void checkEnd() {
+
+        checkWin();
+
+        checkMapFull();
+
+    }
+
+    private static void checkWin() {
+
+    }
+
+    private static void checkMapFull() {
+
     }
 
     private static void aiTurn() {
