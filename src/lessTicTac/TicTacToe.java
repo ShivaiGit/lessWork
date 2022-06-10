@@ -16,6 +16,7 @@ public class TicTacToe {
     static final char[][] FIELD = new char[SIZE][SIZE];
     static final Scanner sc = new Scanner(System.in);
     static final Random rnd = new Random();
+    static int turnsCount;
 
     public static void main(String[] args) {
         startGame();
@@ -72,14 +73,17 @@ public class TicTacToe {
 
     private static void playGame() {
 
-        humanTurn();
-        printField();
-        checkEnd();
+        turnsCount = 0;
+        while (true) {
+            humanTurn();
+            printField();
+            checkEnd(DOT_HUMAN);
 
 
-        aiTurn();
-        printField();
-        checkEnd();
+            aiTurn();
+            printField();
+            checkEnd(DOT_AI);
+        }
 
     }
 
@@ -113,6 +117,7 @@ public class TicTacToe {
 
         } while (!(isInputValid && isHumanTurnValid(rowNumber, columnNumber)));
         FIELD[rowNumber][columnNumber] = DOT_HUMAN;
+        turnsCount++;
 
     }
 
@@ -143,19 +148,39 @@ public class TicTacToe {
         return FIELD[rowNumber][columnNumber] == DOT_EMPTY;
     }
 
-    private static void checkEnd() {
+    private static void checkEnd(char symbol) {
 
-        checkWin();
-
-        checkMapFull();
+        if (checkWin(symbol)) {
+            if (symbol == DOT_HUMAN) {
+                System.out.println("Вы победили!");
+            } else {
+                System.out.println("ИИ победил");
+            }
+            System.exit(0);
+        } else if (checkFieldFull()) {
+            System.out.println("Ничья");
+            System.exit(0);
+        }
 
     }
 
-    private static void checkWin() {
 
+
+    private static boolean checkWin(char symbol) {
+        if ( FIELD[0][0] == symbol && FIELD[0][1] == symbol && FIELD[0][2] == symbol) return true;
+        if (FIELD[1][0] == symbol && FIELD[1][1] == symbol && FIELD[1][2] == symbol) return true;
+        if (FIELD[2][0] == symbol && FIELD[2][1] == symbol && FIELD[2][2] == symbol) return true;
+
+        if (FIELD[0][0] == symbol && FIELD[1][0] == symbol && FIELD[2][0] == symbol) return true;
+        if (FIELD[0][1] == symbol && FIELD[1][1] == symbol && FIELD[2][1] == symbol) return true;
+        if (FIELD[0][2] == symbol && FIELD[1][2] == symbol && FIELD[2][2] == symbol) return true;
+
+        if (FIELD[0][0] == symbol && FIELD[1][1] == symbol && FIELD[2][2] == symbol) return true;
+        if (FIELD[0][2] == symbol && FIELD[1][1] == symbol && FIELD[2][0] == symbol) return true;
+        return false;
     }
 
-    private static void checkMapFull() {
+    private static boolean checkFieldFull() {
         return turnsCount == SIZE * SIZE;
 
     }
@@ -170,6 +195,7 @@ public class TicTacToe {
         } while (!isCellFull(rowNumber, columnNumber));
 
         FIELD[rowNumber][columnNumber] = DOT_AI;
+        turnsCount++;
         System.out.println("Компьютер пошёл: " + rowNumber + "-" + columnNumber);
     }
 }
