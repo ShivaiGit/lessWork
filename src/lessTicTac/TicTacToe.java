@@ -122,8 +122,9 @@ public class TicTacToe {
     }
 
     private static void incorrectInput() {
-        System.out.println("Ошибка ввода. Введите номер в рамках игрового поля.");
         sc.nextLine();
+        System.out.println("Ошибка ввода. Введите номер в рамках игрового поля.");
+
     }
 
     private static boolean isHumanTurnValid(int rowNumber, int columnNumber) {
@@ -165,20 +166,28 @@ public class TicTacToe {
     }
 
 
-
     private static boolean checkWin(char symbol) {
-        if ( FIELD[0][0] == symbol && FIELD[0][1] == symbol && FIELD[0][2] == symbol) return true;
-        if (FIELD[1][0] == symbol && FIELD[1][1] == symbol && FIELD[1][2] == symbol) return true;
-        if (FIELD[2][0] == symbol && FIELD[2][1] == symbol && FIELD[2][2] == symbol) return true;
-
-        if (FIELD[0][0] == symbol && FIELD[1][0] == symbol && FIELD[2][0] == symbol) return true;
-        if (FIELD[0][1] == symbol && FIELD[1][1] == symbol && FIELD[2][1] == symbol) return true;
-        if (FIELD[0][2] == symbol && FIELD[1][2] == symbol && FIELD[2][2] == symbol) return true;
-
-        if (FIELD[0][0] == symbol && FIELD[1][1] == symbol && FIELD[2][2] == symbol) return true;
-        if (FIELD[0][2] == symbol && FIELD[1][1] == symbol && FIELD[2][0] == symbol) return true;
-        return false;
+        boolean win = false;
+        for (int i = 0; i < FIELD.length; i++) {
+            for (int j = 0; j < FIELD[i].length; j++) {
+                win = FIELD[i][j] == symbol;
+            }
+        }
+        return win;
     }
+
+//        if ( FIELD[0][0] == symbol && FIELD[0][1] == symbol && FIELD[0][2] == symbol) return true;
+//        if (FIELD[1][0] == symbol && FIELD[1][1] == symbol && FIELD[1][2] == symbol) return true;
+//        if (FIELD[2][0] == symbol && FIELD[2][1] == symbol && FIELD[2][2] == symbol) return true;
+//
+//        if (FIELD[0][0] == symbol && FIELD[1][0] == symbol && FIELD[2][0] == symbol) return true;
+//        if (FIELD[0][1] == symbol && FIELD[1][1] == symbol && FIELD[2][1] == symbol) return true;
+//        if (FIELD[0][2] == symbol && FIELD[1][2] == symbol && FIELD[2][2] == symbol) return true;
+//
+//        if (FIELD[0][0] == symbol && FIELD[1][1] == symbol && FIELD[2][2] == symbol) return true;
+//        if (FIELD[0][2] == symbol && FIELD[1][1] == symbol && FIELD[2][0] == symbol) return true;
+
+
 
     private static boolean checkFieldFull() {
         return turnsCount == SIZE * SIZE;
