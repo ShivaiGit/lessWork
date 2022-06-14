@@ -122,8 +122,8 @@ public class TicTacToe {
     }
 
     private static void incorrectInput() {
-        sc.nextLine();
         System.out.println("Ошибка ввода. Введите номер в рамках игрового поля.");
+        sc.nextLine();
 
     }
 
@@ -204,8 +204,8 @@ public class TicTacToe {
         } while (!isCellFull(rowNumber, columnNumber));
 
         FIELD[rowNumber][columnNumber] = DOT_AI;
-        turnsCount++;
         System.out.println("Компьютер пошёл: " + rowNumber + "-" + columnNumber);
+        turnsCount++;
 
     }
 }
