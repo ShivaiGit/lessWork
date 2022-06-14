@@ -197,5 +197,6 @@ public class TicTacToe {
         FIELD[rowNumber][columnNumber] = DOT_AI;
         turnsCount++;
         System.out.println("Компьютер пошёл: " + rowNumber + "-" + columnNumber);
+
     }
 }
