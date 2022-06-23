@@ -22,4 +22,8 @@ public class Person {
         System.out.printf("ФИО - %s , Должность - %s , Эл. почта - %s , Номер тел. - %d , Зарплата - %f , Возраст - %d ", fullName,post,email,phoneNumber,salary,age);
     }
 
+    public void printPers (String fullName,String post,String email,int phoneNumber,double salary, int age) {
+        if (age > 40)
+            printInfo();
+    }
 }
