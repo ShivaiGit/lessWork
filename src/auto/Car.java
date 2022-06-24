@@ -4,22 +4,22 @@ public class Car {
     String color;
     double weight;
     int year;
-    private double velocity = 0;
+    private double velocity;
 
-    void beep () {
+    public void beep () {
         System.out.println("BEEP-BEEP!!!");
     }
 
-    void acceleration (double a) {
+    public void acceleration (double a) {
         velocity = velocity + a;
     }
 
-    void deceleration (double b) {
+    public void deceleration (double b) {
         if (velocity - b >=0)
             velocity = velocity - b;
     }
 
-    void print () {
+    public void print () {
         System.out.println("Color: " + color);
         System.out.println("Weight: " + weight);
         System.out.println("Year car: " + year);
