@@ -1,6 +1,6 @@
 package lessonOOP;
 
-public abstract class Animal {
+public class Animal {
     private String ration;
     private String color;
     private int weight;
@@ -35,11 +35,25 @@ public abstract class Animal {
         this.weight = weight;
     }
 
-    public abstract void getVoice();
+    public void running (int length) {
+        System.out.println( " running " + length + " meters.");
+    }
+    public void floating (Animal animal,int length) {
+        System.out.println(animal + " floating " + length + " meters.");
+    }
 
-    public abstract void eat();
 
-    public abstract void sleep();
+    public void getVoice() {
+
+    }
+
+    public void eat() {
+
+    }
+
+    public void sleep() {
+
+    }
 
     @Override
     public String toString() {
